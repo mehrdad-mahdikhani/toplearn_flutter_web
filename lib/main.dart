@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web_application/src/presentation/views/detail/detail_desktop_screen.dart';
-import 'package:web_application/src/presentation/views/home/home_desktop_screen.dart';
+import 'package:web_application/src/config/app_theme.dart';
 import 'package:web_application/src/presentation/views/home/home_page.dart';
 
 void main() {
@@ -13,10 +12,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: AppTheme.appTheme,
       title: 'Flutter Demo',
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
