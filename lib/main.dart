@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:web_application/src/config/app_theme.dart';
-import 'package:web_application/src/presentation/views/home/home_page.dart';
+import 'package:web_application/src/core/app_router.dart';
+import 'package:web_application/src/core/utils.dart';
+// import 'package:web_application/src/presentation/views/home/home_page.dart';
 
 void main() {
+  AppRouter.defineRoutes();
   runApp(const MyApp());
 }
 
@@ -15,8 +18,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.appTheme,
+      navigatorKey: navKeys,
+      onGenerateRoute: AppRouter.appRouter.generator,
+      initialRoute: '/',
       title: 'Flutter Demo',
-      home: const HomePage(),
+      // home: const HomePage(),
     );
   }
 }

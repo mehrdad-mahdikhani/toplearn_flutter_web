@@ -1,4 +1,6 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:web_application/src/core/app_router.dart';
 
 class HomeDesktopScreen extends StatelessWidget {
   const HomeDesktopScreen({Key? key}) : super(key: key);
@@ -36,36 +38,42 @@ class HomeDesktopScreen extends StatelessWidget {
                     child: ListView.builder(
                         itemCount: 2,
                         itemBuilder: (context, index) {
-                          return Container(
-                            height: 300,
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              border: Border.all(),
-                              borderRadius: BorderRadius.circular(16),
+                          return InkWell(
+                            onTap: () {
+                              AppRouter.appRouter.navigateTo(context, '/detail',
+                                  transition: TransitionType.fadeIn);
+                            },
+                            child: Container(
+                              height: 300,
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                border: Border.all(),
+                                borderRadius: BorderRadius.circular(16),
+                              ),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: const [
+                                          Text("عنوان"),
+                                          Spacer(),
+                                          Flexible(child: Text("title")),
+                                        ]),
+                                    Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: const [
+                                          Text("توضیحات"),
+                                          Spacer(),
+                                          Flexible(child: Text("description")),
+                                        ]),
+                                    const Flexible(child: Text("author"))
+                                  ]),
                             ),
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: const [
-                                        Text("عنوان"),
-                                        Spacer(),
-                                        Flexible(child: Text("title")),
-                                      ]),
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: const [
-                                        Text("توضیحات"),
-                                        Spacer(),
-                                        Flexible(child: Text("description")),
-                                      ]),
-                                  const Flexible(child: Text("author"))
-                                ]),
                           );
                         }),
                   ),
